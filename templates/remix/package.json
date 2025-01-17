@@ -7,10 +7,10 @@
   "sideEffects": false,
   "scripts": {
     "build": "remix vite:build",
-    "deploy": "wrangler -j deploy",
+    "deploy": "wrangler deploy",
     "dev": "superflare dev",
-    "start": "wrangler -j dev",
-    "typegen": "wrangler -j types",
+    "start": "wrangler dev",
+    "typegen": "wrangler types",
     "typecheck": "tsc"
   },
   "keywords": [],

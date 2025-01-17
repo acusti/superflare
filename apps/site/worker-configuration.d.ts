@@ -4,4 +4,5 @@ interface Env {
 	DOCSEARCH_APP_ID: string;
 	DOCSEARCH_API_KEY: string;
 	DOCSEARCH_INDEX_NAME: string;
+	GITHUB_TOKEN: string;
 }

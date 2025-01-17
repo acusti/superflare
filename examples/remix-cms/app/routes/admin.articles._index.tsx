@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "react-router";
 import { Button } from "~/components/admin/Button";
 import { Page } from "~/components/admin/Page";
 import { Article } from "~/models/Article";

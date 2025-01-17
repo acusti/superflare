@@ -1,4 +1,4 @@
-import { type LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { type LoaderFunctionArgs } from "react-router";
 import { servePublicPathFromStorage } from "superflare";
 
 export async function loader({ request }: LoaderFunctionArgs) {

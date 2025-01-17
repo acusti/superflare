@@ -1,8 +1,8 @@
 import { Button } from "~/components/admin/Button";
 import { Page } from "~/components/admin/Page";
-import { ArticleForm } from "./components/article-form";
+import { ArticleForm } from "./admin/components/article-form";
 
-export { action } from "./components/article-form";
+export { action } from "./admin/components/article-form";
 
 export default function NewArticle() {
   return (

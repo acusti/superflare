@@ -2,15 +2,13 @@ import {
   type LinksFunction,
   type MetaFunction,
   type LoaderFunctionArgs,
-} from "@remix-run/cloudflare";
-import {
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useLoaderData,
-} from "@remix-run/react";
+} from "react-router";
 import "@docsearch/css";
 import "focus-visible";
 import "./styles/tailwind.css";

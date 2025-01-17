@@ -1,8 +1,5 @@
-import {
-  type LoaderFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/cloudflare";
-import { useLoaderData } from "@remix-run/react";
+import { type LoaderFunctionArgs, type MetaFunction } from "react-router";
+import { useLoaderData } from "react-router";
 import { Layout } from "~/components/Layout";
 import { getManifest, getMarkdownForPath, parseMarkdoc } from "~/docs.server";
 import { renderMarkdoc } from "~/markdoc";

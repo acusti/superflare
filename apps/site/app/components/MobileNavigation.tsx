@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigation } from "@remix-run/react";
+import { Link, useNavigation } from "react-router";
 import { Dialog } from "@headlessui/react";
 
 import { Logomark } from "~/components/Logo";

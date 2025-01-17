@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@remix-run/react";
+import { Link, useLocation } from "react-router";
 import clsx from "clsx";
 import { Manifest } from "~/docs.server";
 

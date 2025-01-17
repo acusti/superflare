@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link, useLocation } from "@remix-run/react";
+import { Link, useLocation } from "react-router";
 import clsx from "clsx";
 
 import { Hero } from "~/components/Hero";

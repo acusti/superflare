@@ -1,4 +1,4 @@
-import { MetaFunction } from "@remix-run/react/dist/routeModules";
+import { type MetaFunction } from "react-router";
 
 import { loader as indexLoader } from "./_index";
 

@@ -39,5 +39,5 @@ node_modules
 /public/build
 .env
 /.wrangler
-
+.react-router/
 .dev.vars

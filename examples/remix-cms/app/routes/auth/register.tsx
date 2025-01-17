@@ -1,5 +1,5 @@
 import { Form, Link, useActionData } from "@remix-run/react";
-import { json, redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
+import { redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
 import { Button } from "~/components/admin/Button";
 import { FormField } from "~/components/Form";
 import { User } from "~/models/User";
@@ -19,7 +19,7 @@ export async function action({
   const name = formData.get("name") as string;
 
   if (await User.where("email", email).count()) {
-    return json({ error: "Email already exists" }, { status: 400 });
+    return Response.json({ error: "Email already exists" }, { status: 400 });
   }
 
   const user = await User.create({
@@ -34,7 +34,7 @@ export async function action({
 }
 
 export default function Register() {
-  const actionData = useActionData<typeof action>();
+  const actionData = useActionData<{ error: string }>();
 
   return (
     <Form method="post" className="grid grid-cols-6 gap-4">

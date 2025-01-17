@@ -1,5 +1,5 @@
 import { Form, Link, useActionData } from "@remix-run/react";
-import { json, redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
+import { redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
 import { User } from "~/models/User";
 
 export async function action({
@@ -18,11 +18,11 @@ export async function action({
     return redirect("/dashboard");
   }
 
-  return json({ error: "Invalid credentials" }, { status: 400 });
+  return Response.json({ error: "Invalid credentials" }, { status: 400 });
 }
 
 export default function Login() {
-  const actionData = useActionData<typeof action>();
+  const actionData = useActionData<{ error: string }>();
 
   return (
     <Form method="post">

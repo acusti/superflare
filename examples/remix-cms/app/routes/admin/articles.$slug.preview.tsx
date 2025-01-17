@@ -19,10 +19,10 @@ export async function loader({ params }: LoaderFunctionArgs) {
     throw new Response("Not found", { status: 404 });
   }
 
-  return json({
+  return {
     article,
     html: await convertToHtml(article.content ?? ""),
-  });
+  };
 }
 
 export default function NewArticle() {

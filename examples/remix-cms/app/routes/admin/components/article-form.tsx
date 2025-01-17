@@ -1,9 +1,4 @@
-import {
-  json,
-  redirect,
-  type SerializeFrom,
-  type ActionFunctionArgs,
-} from "@remix-run/cloudflare";
+import { redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
 import { Form, useActionData } from "@remix-run/react";
 import { Article } from "~/models/Article";
 import invariant from "tiny-invariant";
@@ -29,7 +24,7 @@ const enum Intent {
   Update = "update",
 }
 
-const badResponse = (data: ActionData) => json(data, { status: 422 });
+const badResponse = (data: ActionData) => Response.json(data, { status: 422 });
 
 export async function action({
   request,
@@ -110,7 +105,7 @@ export function ArticleForm({
   article,
   id,
 }: {
-  article?: SerializeFrom<Article>;
+  article?: Article;
   id?: string;
 }) {
   const actionData = useActionData<ActionData>();

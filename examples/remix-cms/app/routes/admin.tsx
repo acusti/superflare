@@ -14,7 +14,7 @@ import {
 import clsx from "clsx";
 import { Link, NavLink, Outlet, useLoaderData } from "@remix-run/react";
 import { Toast } from "~/components/Toast";
-import { json, type LoaderFunctionArgs, redirect } from "@remix-run/cloudflare";
+import { type LoaderFunctionArgs, redirect } from "@remix-run/cloudflare";
 import { User } from "~/models/User";
 
 const navigation = [
@@ -33,10 +33,7 @@ export async function loader({
 
   const user = await auth.user(User);
 
-  return json({
-    flash,
-    user,
-  });
+  return { flash, user };
 }
 
 export default function AdminLayout() {

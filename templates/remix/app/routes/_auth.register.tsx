@@ -1,5 +1,5 @@
 import { Form, Link, useActionData } from "@remix-run/react";
-import { json, redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
+import { redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
 import { User } from "~/models/User";
 import { hash } from "superflare";
 
@@ -16,7 +16,7 @@ export async function action({
   const password = formData.get("password") as string;
 
   if (await User.where("email", email).count()) {
-    return json({ error: "Email already exists" }, { status: 400 });
+    return Response.json({ error: "Email already exists" }, { status: 400 });
   }
 
   const user = await User.create({
@@ -30,7 +30,7 @@ export async function action({
 }
 
 export default function Register() {
-  const actionData = useActionData<typeof action>();
+  const actionData = useActionData<{ error: string }>();
 
   return (
     <Form method="post">

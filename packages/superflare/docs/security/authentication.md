@@ -43,7 +43,7 @@ export async function loader({ context: { auth } }: LoaderFunctionArgs) {
   const user = await auth.user(User);
 
   // If the user is logged in, show them the secret page
-  return json({ message: `You're logged in, ${user.name}!` });
+  return { message: `You're logged in, ${user.name}!` };
 }
 ```
 

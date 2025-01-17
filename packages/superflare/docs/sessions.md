@@ -27,7 +27,7 @@ export async function action({ context: { session } }) {
 export async function loader({ context: { session } }) {
   const theme = session.get("theme");
 
-  return json({ theme });
+  return { theme };
 }
 ```
 
@@ -41,7 +41,7 @@ To do this, you can use the `flash` method:
 export async function loader({ context: { session } }) {
   session.flash("success", "Your form was submitted successfully!");
 
-  return json({ success: true });
+  return { success: true };
 }
 ```
 
@@ -51,7 +51,7 @@ Then, you can read the flash message in your action using the `getFlash` method:
 export async function action({ context: { session } }) {
   const success = session.getFlash("success");
 
-  return json({ success });
+  return { success };
 }
 ```
 

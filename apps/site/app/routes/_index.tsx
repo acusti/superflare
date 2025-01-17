@@ -1,5 +1,4 @@
 import {
-  json,
   type LoaderFunctionArgs,
   type MetaFunction,
 } from "@remix-run/cloudflare";
@@ -34,7 +33,7 @@ export async function loader({
   const { content, title, tableOfContents, description } =
     parseMarkdoc(markdown);
 
-  return json({ content, title, tableOfContents, manifest, description });
+  return { content, title, tableOfContents, manifest, description };
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [

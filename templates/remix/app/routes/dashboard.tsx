@@ -1,4 +1,4 @@
-import { type LoaderFunctionArgs, redirect, json } from "@remix-run/cloudflare";
+import { type LoaderFunctionArgs, redirect } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { User } from "~/models/User";
 
@@ -7,9 +7,9 @@ export async function loader({ context: { auth } }: LoaderFunctionArgs) {
     return redirect("/login");
   }
 
-  return json({
+  return {
     user: (await auth.user(User)) as User,
-  });
+  };
 }
 
 export default function Dashboard() {

@@ -1,5 +1,5 @@
+import { redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
 import { Form, Link, useActionData } from "@remix-run/react";
-import { json, redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
 import { Button } from "~/components/admin/Button";
 import { FormField } from "~/components/Form";
 import { User } from "~/models/User";
@@ -26,11 +26,11 @@ export async function action({
     return redirect("/admin");
   }
 
-  return json({ error: "Invalid credentials" }, { status: 400 });
+  return Response.json({ error: "Invalid credentials" }, { status: 400 });
 }
 
 export default function Login() {
-  const actionData = useActionData<typeof action>();
+  const actionData = useActionData<{ error: string }>();
 
   return (
     <>

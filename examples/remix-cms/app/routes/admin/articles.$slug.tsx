@@ -1,5 +1,5 @@
 import { EyeIcon } from "@heroicons/react/24/outline";
-import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { type LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData, useRevalidator } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { Button, SecondaryButton } from "~/components/admin/Button";
@@ -24,7 +24,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
   SayHelloJob.dispatch(article);
 
-  return json({ article });
+  return { article };
 }
 
 export default function NewArticle() {

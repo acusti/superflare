@@ -202,7 +202,6 @@ If you don't eager load the related models, the related data will not be availab
 
 ```tsx
 import { User } from "~/models/User";
-import { json } from "@remix-run/cloudflare";
 
 export async function loader() {
   // ❌ The profile relation will not be loaded
@@ -211,7 +210,7 @@ export async function loader() {
   // ✅ This will load the profile relation for the view
   const user = await User.with("profile").find(1);
 
-  return json({ user });
+  return { user };
 }
 
 export default function UserView() {

@@ -1,4 +1,3 @@
-import { json } from "@remix-run/cloudflare";
 import { Link, useLoaderData } from "@remix-run/react";
 import { Button } from "~/components/admin/Button";
 import { Page } from "~/components/admin/Page";
@@ -8,7 +7,7 @@ import { useChannel } from "~/utils/use-channel";
 export async function loader() {
   const articles = await Article.with("user").orderBy("createdAt", "desc");
 
-  return json({ articles });
+  return { articles };
 }
 
 export default function Articles() {

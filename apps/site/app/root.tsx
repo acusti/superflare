@@ -1,5 +1,4 @@
 import {
-  json,
   type LinksFunction,
   type MetaFunction,
   type LoaderFunctionArgs,
@@ -46,13 +45,13 @@ export const links: LinksFunction = () => [
 ];
 
 export async function loader({ context: { cloudflare } }: LoaderFunctionArgs) {
-  return json({
+  return {
     ENV: {
       DOCSEARCH_APP_ID: cloudflare.env.DOCSEARCH_APP_ID,
       DOCSEARCH_API_KEY: cloudflare.env.DOCSEARCH_API_KEY,
       DOCSEARCH_INDEX_NAME: cloudflare.env.DOCSEARCH_INDEX_NAME,
     },
-  });
+  };
 }
 
 const themeScript = `

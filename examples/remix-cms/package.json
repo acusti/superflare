@@ -39,7 +39,6 @@
     "@cloudflare/workers-types": "^4.20241011.0",
     "@faker-js/faker": "^7.6.0",
     "@remix-run/dev": "^2.12.1",
-    "@remix-run/eslint-config": "^2.12.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/marked": "^4.0.8",
     "@types/react": "^18.0.28",

@@ -1,4 +1,4 @@
-import { createRequestHandler, type ServerBuild } from "@remix-run/cloudflare";
+import { createRequestHandler, type ServerBuild } from "react-router";
 import { handleFetch } from "@superflare/remix";
 import { handleQueue, handleScheduled } from "superflare";
 import config from "./superflare.config";

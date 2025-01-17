@@ -1,11 +1,11 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
 import {
+  type MetaFunction,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
+} from "react-router";
 
 export const meta: MetaFunction = () => [
   { charset: "utf-8" },

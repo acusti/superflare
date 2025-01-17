@@ -8,3 +8,4 @@ node_modules
 /.wrangler
 superflare.env.d.ts
 .dev.vars
+.react-router/

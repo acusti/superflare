@@ -55,7 +55,7 @@
     "yargs": "^17.6.2"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241011.0",
+    "@cloudflare/workers-types": "^4.20250109.0",
     "@miniflare/core": "^2.14.2",
     "@miniflare/d1": "^2.14.2",
     "@miniflare/shared": "^2.14.2",
@@ -67,7 +67,7 @@
     "@types/yargs": "^17.0.20",
     "better-sqlite3": "^11.5.0",
     "tsconfig": "workspace:*",
-    "tsup": "^6.6.3",
+    "tsup": "^8.3.5",
     "typescript": "^5",
     "vitest": "^0.28.3"
   }

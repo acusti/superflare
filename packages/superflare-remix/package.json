@@ -37,12 +37,12 @@
   "author": "Josh Larson <jplhomer@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241011.0",
+    "@cloudflare/workers-types": "^4.20250109.0",
     "@remix-run/cloudflare": "^2.12.1",
     "@remix-run/dev": "^2.12.1",
     "@remix-run/server-runtime": "^2.12.1",
     "tsconfig": "workspace:*",
-    "tsup": "^6.6.3",
+    "tsup": "^8.3.5",
     "typescript": "^5",
     "vite": "^5",
     "wrangler": "^3.91.0"

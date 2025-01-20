@@ -90,7 +90,7 @@ export async function devHandler(
     env: process.env,
   });
 
-  spawn("remix", ["vite:dev"], {
+  spawn("react-router", ["dev"], {
     stdio: "inherit",
     shell: true,
     env: process.env,

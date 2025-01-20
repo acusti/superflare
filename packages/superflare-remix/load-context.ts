@@ -1,7 +1,4 @@
-import {
-  type AppLoadContext,
-  createCookieSessionStorage,
-} from "@remix-run/cloudflare";
+import { type AppLoadContext, createCookieSessionStorage } from "react-router";
 import type { SuperflareAuth, SuperflareSession } from "superflare";
 import { type PlatformProxy } from "wrangler";
 
@@ -9,10 +6,9 @@ import { type PlatformProxy } from "wrangler";
 // https://github.com/cloudflare/workers-sdk/blob/main/packages/wrangler/src/api/integrations/platform/caches.ts
 export type Cloudflare<Env extends { APP_KEY: string }> = Omit<
   PlatformProxy<Env>,
-  "dispose" | "caches" | "cf"
+  "dispose" | "caches"
 > & {
   caches: CacheStorage;
-  cf: Request["cf"];
 };
 
 // Shared implementation compatible with Vite, Wrangler, and Workers

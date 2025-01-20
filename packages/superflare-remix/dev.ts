@@ -1,15 +1,9 @@
-import { cloudflareDevProxyVitePlugin } from "@remix-run/dev";
-import {
-  fromNodeRequest,
-  toNodeRequest,
-} from "@remix-run/dev/dist/vite/node-adapter.js";
-import {
-  createRequestHandler,
-  type ServerBuild,
-} from "@remix-run/server-runtime";
+import { cloudflareDevProxy } from "@react-router/dev/vite/cloudflare";
+import { createRequestHandler, type ServerBuild } from "react-router";
 import { type Plugin, type ViteDevServer } from "vite";
 import { type GetPlatformProxyOptions } from "wrangler";
 import { type Cloudflare, getLoadContext } from "./load-context";
+import { fromNodeRequest, toNodeRequest } from "./node-adapter";
 
 /**
  * This is copied from the workers-sdk repo (used for wrangler’s getPlatformProxy).
@@ -41,7 +35,7 @@ export function superflareDevProxyVitePlugin<Env extends { APP_KEY: string }>(
   options: GetPlatformProxyOptions = {}
 ): Plugin {
   const ctx = new ExecutionContext();
-  const remixVitePlugin = cloudflareDevProxyVitePlugin(options);
+  const remixVitePlugin = cloudflareDevProxy(options);
 
   return {
     ...remixVitePlugin,
@@ -61,7 +55,7 @@ export function superflareDevProxyVitePlugin<Env extends { APP_KEY: string }>(
               // the same instance of the Config singleton class as in app code.
               const superflare = await server.ssrLoadModule("superflare");
               const build = (await server.ssrLoadModule(
-                "virtual:remix/server-build"
+                "virtual:react-router/server-build"
               )) as ServerBuild;
 
               const handler = createRequestHandler(build, "development");

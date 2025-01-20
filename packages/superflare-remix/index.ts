@@ -1,4 +1,4 @@
-import { type AppLoadContext } from "@remix-run/cloudflare";
+import { type AppLoadContext } from "react-router";
 import {
   type DefineConfigReturn,
   handleFetch as superflareHandleFetch,
@@ -10,7 +10,7 @@ import { type Cloudflare, getLoadContext } from "./load-context";
 
 export { type Cloudflare, getLoadContext } from "./load-context";
 
-declare module "@remix-run/cloudflare" {
+declare module "react-router" {
   interface AppLoadContext {
     auth: InstanceType<typeof SuperflareAuth>;
     session: InstanceType<typeof SuperflareSession>;
@@ -39,7 +39,7 @@ export async function handleFetch<Env extends { APP_KEY: string }>(
       // `getPlatformProxy` used during development via Remix's
       // `cloudflareDevProxyVitePlugin`:
       // https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy
-      cloudflare: { caches, ctx, env, cf: request.cf },
+      cloudflare: { caches, ctx, env, cf: request.cf as Cloudflare<Env>["cf"] },
     },
     SuperflareAuth,
     SuperflareSession,

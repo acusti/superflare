@@ -26,7 +26,7 @@ If you've created a Superflare app with `npx superflare new`, you should already
 
 ## Register and Login pages
 
-The [Superflare Remix template](https://github.com/jplhomer/superflare/tree/main/templates/remix) provides basic `/register` and `/login` routes and forms for you to use. You can use these as-is, or you can copy the code and modify it to your liking.
+The [Superflare React Router template](https://github.com/jplhomer/superflare/tree/main/templates/remix) provides basic `/register` and `/login` routes and forms for you to use. You can use these as-is, or you can copy the code and modify it to your liking.
 
 ## Protecting routes
 

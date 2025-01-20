@@ -9,7 +9,7 @@ The `SuperflareSession` instance keeps track of any changes to the session, and 
 
 ## Creating sessions
 
-_The following instructions assume you are using Remix. They will be updated when Superflare supports other frameworks._
+_The following instructions assume you are using React Router. They will be updated when Superflare supports other frameworks._
 
 The `@superflare/remix` package exports `handleFetch`, which takes care of session creation and makes the session available on your Remix `AppContext` in deployed workers. There is an additional entry point, `@superflare/remix/dev`, that exports `superflareDevProxyVitePlugin` to provide the same automatic session handling in local dev when using the Vite dev server. See the [Getting Started](/getting-started) guide for details.
 

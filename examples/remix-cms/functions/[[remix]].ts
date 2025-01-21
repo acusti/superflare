@@ -1,47 +1,33 @@
 import { createRequestHandler, createCookieSessionStorage } from "react-router";
-import { handleFetch, SuperflareAuth } from "superflare";
-import getConfig from "../superflare.config";
+import { handleFetch } from "@superflare/remix";
+import config from "../superflare.config";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore This file won’t exist if it hasn’t yet been built
 import * as build from "../build/server"; // eslint-disable-line import/no-unresolved
 
 let handleRequest: ReturnType<typeof createRequestHandler>;
 
-export const onRequest: PagesFunction<Env> = async (ctx) => {
+export const onRequest: PagesFunction<Env & { CF_PAGES?: string }> = async (
+  context
+) => {
   if (!handleRequest) {
     handleRequest = createRequestHandler(
       build as any,
-      ctx.env.CF_PAGES ? "production" : "development"
+      context.env.CF_PAGES ? "production" : "development"
     );
   }
 
-  const sessionStorage = createCookieSessionStorage({
-    cookie: {
-      httpOnly: true,
-      path: "/",
-      secure: /^(http|ws)s:\/\//.test(ctx.request.url),
-      secrets: [ctx.env.APP_KEY],
-    },
-  });
+  const ctx = {
+    passThroughOnException: context.passThroughOnException.bind(context),
+    props: {},
+    waitUntil: context.waitUntil.bind(context),
+  };
 
-  const session = await sessionStorage.getSession(
-    ctx.request.headers.get("Cookie")
-  );
-
-  return handleFetch(
-    {
-      config: getConfig({
-        request: ctx.request,
-        env: ctx.env,
-        ctx,
-      }),
-      getSessionCookie: () => sessionStorage.commitSession(session),
-    },
-    () =>
-      handleRequest(ctx.request, {
-        auth: new SuperflareAuth(session),
-        session,
-        env: ctx.env,
-      })
+  return handleFetch<Env>(
+    context.request,
+    context.env,
+    ctx,
+    config,
+    handleRequest
   );
 };

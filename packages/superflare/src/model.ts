@@ -220,8 +220,8 @@ export class Model {
       const value = this.relations[key];
       acc[key] =
         value instanceof Array
-          ? value.map((model) => model.serialize())
-          : value.serialize();
+          ? value.map((model) => model.toJSON())
+          : value.toJSON();
       return acc;
     }, {} as Record<string, any>);
   }

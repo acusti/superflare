@@ -10,6 +10,7 @@ export class QueryBuilder {
   private $eagerLoad: string[] = [];
   private $limit: number | null = null;
   private $single: boolean = false;
+  private $serialize: boolean = false;
   private $modelClass: any;
   private $afterHooks: ((results: any) => void)[] = [];
 
@@ -69,6 +70,9 @@ export class QueryBuilder {
 
       results = await this.eagerLoadRelations(results);
 
+      results = this.$serialize
+        ? results.map((result: typeof this.$modelClass) => result.toJSON())
+        : results;
       let result = this.$single ? results[0] ?? null : results;
 
       this.runCallbacks(result);
@@ -137,6 +141,11 @@ export class QueryBuilder {
   first(): any {
     this.$single = true;
     return this.limit(1);
+  }
+
+  toJSON(): this {
+    this.$serialize = true;
+    return this;
   }
 
   async insert(attributes: Record<string, any>): Promise<any> {

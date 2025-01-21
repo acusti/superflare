@@ -34,7 +34,7 @@ export class Model {
 
     return new Proxy(this, {
       get(target, prop) {
-        if (prop in target) {
+        if (target[prop as keyof Model] !== undefined) {
           return target[prop as keyof Model];
         }
 
@@ -58,6 +58,10 @@ export class Model {
         target[prop as keyof Model] = value;
         target.attributes[prop] = value;
         return true;
+      },
+
+      ownKeys(target) {
+        return Object.keys(target.toJSON());
       },
     });
   }

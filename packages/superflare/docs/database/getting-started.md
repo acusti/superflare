@@ -58,7 +58,7 @@ However, we cannot simply send the entire data model over the wire from the serv
 
 Instead, modern frameworks will serialize the output sent (from "loaders" in Remix, or passed as props from server components to client components in Next.js).
 
-Superflare makes it obvious how to serialize your models as JSON by providing the standard `toJSON()` method by on new models.
+Superflare makes it obvious how to serialize your models as JSON by providing the standard `toJSON()` method on new models.
 
 By default, this method will return all of the model's attributes, in addition to any relations that are loaded on the instance either manually or by using eager-loading.
 

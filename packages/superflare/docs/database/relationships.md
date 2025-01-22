@@ -163,7 +163,7 @@ for (const tag of tags) {
 }
 ```
 
-When invoking the `$tags()` method or awaiting the `tags` property, Superflare will check an intermediate table, often referred to as a "join table," for rows which have a `postId` that matches the `id` of the `Post` model. It will return all `Tag` models which have a `id` that matches the `tagId` of the join table rows.
+When invoking the `$tags()` method or awaiting the `tags` property, Superflare will check an intermediate table, often referred to as a "join table", for rows which have a `postId` that matches the `id` of the `Post` model. It will return all `Tag` models which have a `id` that matches the `tagId` of the join table rows.
 
 To define the inverse relationship, use the `belongsToMany` method again:
 

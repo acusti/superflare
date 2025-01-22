@@ -46,7 +46,7 @@ export class Model {
           return target.attributes[prop];
         }
 
-        // If trying to access a relation property, and it hasn't be set yet, call the relation function.
+        // If trying to access a relation property that hasn't been set yet, call the relation function.
         if (typeof prop === "string" && target[`$${prop}` as keyof Model]) {
           return target[`$${prop}` as keyof Model]();
         }

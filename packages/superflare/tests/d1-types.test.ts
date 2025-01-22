@@ -146,7 +146,7 @@ describe("syncSuperflareTypes", () => {
     const types = await generateTypesFromSqlite(db);
     const results = syncSuperflareTypes(tmpDir, modelsDir, types);
 
-    // Expect `user.ts` to not exist
+    // Expect `User.ts` to not exist
     expect(fs.existsSync(path.join(tmpDir, "User.ts"))).toBe(false);
 
     expect(fs.readFileSync(path.join(modelsDir, "Post.ts"), "utf8")).toBe(
@@ -173,7 +173,7 @@ describe("syncSuperflareTypes", () => {
       createIfNotFound: true,
     });
 
-    // Expect `user.ts` to have been created
+    // Expect `User.ts` to have been created
     expect(fs.existsSync(path.join(modelsDir, "User.ts"))).toBe(true);
     expect(fs.readFileSync(path.join(modelsDir, "User.ts"), "utf8")).toBe(
       "import { Model } from 'superflare';\n\n" +

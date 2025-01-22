@@ -6,6 +6,7 @@ export class User extends Model {
     return rest;
   }
 }
+
 Model.register(User);
 
 export interface User extends UserRow {}

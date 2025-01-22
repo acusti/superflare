@@ -14,7 +14,7 @@ class Post extends ModelConstructor {
   updatedAt!: string;
   userId!: number;
 
-  user!: User | Promise<User>;
+  user!: User;
   $user() {
     return this.belongsTo(User);
   }

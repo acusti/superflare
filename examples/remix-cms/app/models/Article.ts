@@ -2,7 +2,7 @@ import { Model } from "superflare";
 import { User } from "./User";
 
 export class Article extends Model {
-  user!: User | Promise<User>;
+  user!: User;
   $user() {
     return this.belongsTo(User);
   }

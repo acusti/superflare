@@ -11,7 +11,7 @@
     "dev": "superflare dev",
     "start": "wrangler dev",
     "migrate": "superflare migrate",
-    "typegen": "wrangler types",
+    "typegen": "superflare migrate && wrangler types && react-router typegen",
     "typecheck": "react-router typegen && tsc"
   },
   "keywords": [],

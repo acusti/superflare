@@ -21,7 +21,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
   if (!article) {
     throw new Response("Not found", { status: 404 });
   }
-
+  console.log(article.user.name);
   SayHelloJob.dispatch(article);
 
   return { article };

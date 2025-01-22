@@ -1,5 +1,5 @@
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
-import { type LoaderFunctionArgs, useLoaderData } from "react-router";
+import { useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 
 import { SecondaryButton } from "~/components/admin/Button";
@@ -7,7 +7,9 @@ import { Page } from "~/components/admin/Page";
 import { Article } from "~/models/Article";
 import { convertToHtml } from "~/utils/markdown.server";
 
-export async function loader({ params }: LoaderFunctionArgs) {
+import type { Route } from "./+types/admin.articles.$slug.preview";
+
+export async function loader({ params }: Route.LoaderArgs) {
   const { slug } = params;
 
   invariant(typeof slug === "string", "Missing slug");

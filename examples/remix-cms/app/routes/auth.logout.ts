@@ -1,6 +1,8 @@
-import { type ActionFunctionArgs, redirect } from "react-router";
+import { redirect } from "react-router";
 
-export async function action({ context: { auth } }: ActionFunctionArgs) {
+import type { Route } from "./+types/auth.logout";
+
+export async function action({ context: { auth } }: Route.ActionArgs) {
   auth.logout();
 
   return redirect("/");

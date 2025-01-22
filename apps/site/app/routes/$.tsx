@@ -7,9 +7,7 @@ export { default } from "./_index";
 export const loader = indexLoader;
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
-  {
-    title: data?.title ? `${data.title} - Superflare` : "Superflare",
-  },
+  { title: data?.title ? `${data.title} - Superflare` : "Superflare" },
   {
     "twitter:title": data?.title ? `${data.title} - Superflare` : "Superflare",
   },

@@ -1,19 +1,12 @@
-import {
-  type ActionFunctionArgs,
-  Form,
-  Link,
-  redirect,
-  useActionData,
-} from "react-router";
+import { Form, Link, redirect, useActionData } from "react-router";
 import { Button } from "~/components/admin/Button";
 import { FormField } from "~/components/Form";
 import { User } from "~/models/User";
 import { hash } from "superflare";
 
-export async function action({
-  request,
-  context: { auth },
-}: ActionFunctionArgs) {
+import type { Route } from "./+types/auth.register";
+
+export async function action({ request, context: { auth } }: Route.ActionArgs) {
   if (await auth.check(User)) {
     return redirect("/admin");
   }

@@ -12,25 +12,18 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import {
-  type LoaderFunctionArgs,
-  Link,
-  NavLink,
-  Outlet,
-  redirect,
-  useLoaderData,
-} from "react-router";
+import { Link, NavLink, Outlet, redirect, useLoaderData } from "react-router";
 import { Toast } from "~/components/Toast";
 import { User } from "~/models/User";
+
+import type { Route } from "./+types/admin";
 
 const navigation = [
   { name: "Dashboard", href: "/admin", icon: HomeIcon, end: true },
   { name: "Articles", href: "./articles", icon: FolderIcon },
 ];
 
-export async function loader({
-  context: { auth, session },
-}: LoaderFunctionArgs) {
+export async function loader({ context: { auth, session } }: Route.LoaderArgs) {
   if (!(await auth.check(User))) {
     return redirect("/auth/login");
   }

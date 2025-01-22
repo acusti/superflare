@@ -1,16 +1,9 @@
-import {
-  type ActionFunctionArgs,
-  Form,
-  Link,
-  redirect,
-  useActionData,
-} from "react-router";
+import { Form, Link, redirect, useActionData } from "react-router";
 import { User } from "~/models/User";
 
-export async function action({
-  request,
-  context: { auth },
-}: ActionFunctionArgs) {
+import type { Route } from "./+types/_auth.login";
+
+export async function action({ request, context: { auth } }: Route.ActionArgs) {
   if (await auth.check(User)) {
     return redirect("/dashboard");
   }

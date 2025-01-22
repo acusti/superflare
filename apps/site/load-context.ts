@@ -11,18 +11,6 @@ declare module "react-router" {
   interface AppLoadContext {
     cloudflare: Cloudflare;
   }
-
-  // TODO: remove this once we've migrated to `Route.LoaderArgs` instead for our loaders
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-  interface LoaderFunctionArgs {
-    context: AppLoadContext;
-  }
-
-  // TODO: remove this once we've migrated to `Route.ActionArgs` instead for our actions
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-  interface ActionFunctionArgs {
-    context: AppLoadContext;
-  }
 }
 
 export {}; // necessary for TS to treat this as a module

@@ -1,7 +1,8 @@
-import { type ActionFunctionArgs } from "react-router";
 import { parseMultipartFormData, storage } from "superflare";
 
-export async function action({ request }: ActionFunctionArgs) {
+import type { Route } from "./+types/admin.upload.$";
+
+export async function action({ request }: Route.ActionArgs) {
   const formData = await parseMultipartFormData(
     request,
     async ({ stream, filename }) => {

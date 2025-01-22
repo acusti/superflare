@@ -1,7 +1,6 @@
 import {
   type LinksFunction,
   type MetaFunction,
-  type LoaderFunctionArgs,
   Links,
   Meta,
   Outlet,
@@ -12,6 +11,8 @@ import {
 import "@docsearch/css";
 import "focus-visible";
 import "./styles/tailwind.css";
+
+import type { Route } from "./routes/+types/_index";
 
 export const meta: MetaFunction = () => [
   { title: "Superflare", "twitter:title": "Superflare" },
@@ -42,7 +43,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export async function loader({ context: { cloudflare } }: LoaderFunctionArgs) {
+export async function loader({ context: { cloudflare } }: Route.LoaderArgs) {
   return {
     ENV: {
       DOCSEARCH_APP_ID: cloudflare.env.DOCSEARCH_APP_ID,

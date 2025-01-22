@@ -140,10 +140,11 @@ You can import this utility in a route handler and pass it the current pathname 
 ```ts
 // app/routes/storage.$.ts
 
-import { type LoaderFunctionArgs } from "react-router";
 import { servePublicPathFromStorage } from "superflare";
 
-export async function loader({ request }: LoaderFunctionArgs) {
+import type { Route } from './+types/storage.$';
+
+export async function loader({ request }: Route.LoaderArgs) {
   const { pathname } = new URL(request.url);
   return servePublicPathFromStorage(pathname);
 }

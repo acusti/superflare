@@ -1,14 +1,16 @@
-import { type LoaderFunctionArgs, type MetaFunction } from "react-router";
+import { type MetaFunction } from "react-router";
 import { useLoaderData } from "react-router";
 import { Layout } from "~/components/Layout";
 import { getManifest, getMarkdownForPath, parseMarkdoc } from "~/docs.server";
 import { renderMarkdoc } from "~/markdoc";
 
+import type { Route } from "./+types/_index";
+
 export async function loader({
   params,
   context: { cloudflare },
-}: LoaderFunctionArgs) {
-  const path = params["*"] ?? ("index" as string);
+}: Route.LoaderArgs) {
+  const path = params["*"] ?? "index";
 
   const useGitHub = process.env.NODE_ENV === "production";
   const markdown = await getMarkdownForPath(

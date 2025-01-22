@@ -1,9 +1,5 @@
 import { EyeIcon } from "@heroicons/react/24/outline";
-import {
-  type LoaderFunctionArgs,
-  useLoaderData,
-  useRevalidator,
-} from "react-router";
+import { useLoaderData, useRevalidator } from "react-router";
 import invariant from "tiny-invariant";
 import { Button, SecondaryButton } from "~/components/admin/Button";
 import { Page } from "~/components/admin/Page";
@@ -12,9 +8,11 @@ import { Article } from "~/models/Article";
 import { useChannel } from "~/utils/use-channel";
 import { ArticleForm } from "./admin/components/article-form";
 
+import type { Route } from "./+types/admin.articles.$slug._index";
+
 export { action } from "./admin/components/article-form";
 
-export async function loader({ params }: LoaderFunctionArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const { slug } = params;
 
   invariant(typeof slug === "string", "Missing slug");

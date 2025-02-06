@@ -1,9 +1,9 @@
+import { createRequest, sendResponse } from "@mjackson/node-fetch-server";
 import { cloudflareDevProxy } from "@react-router/dev/vite/cloudflare";
 import { createRequestHandler, type ServerBuild } from "react-router";
 import { type Plugin, type ViteDevServer } from "vite";
 import { type GetPlatformProxyOptions } from "wrangler";
 import { type Cloudflare, getLoadContext } from "./load-context";
-import { fromNodeRequest, toNodeRequest } from "./node-adapter";
 
 /**
  * This is copied from the workers-sdk repo (used for wrangler’s getPlatformProxy).
@@ -59,7 +59,7 @@ export function superflareDevProxyVitePlugin<Env extends { APP_KEY: string }>(
               )) as ServerBuild;
 
               const handler = createRequestHandler(build, "development");
-              const request = fromNodeRequest(nodeReq, nodeRes);
+              const request = createRequest(nodeReq, nodeRes);
               const loadContext = await getLoadContext<Env>({
                 context,
                 request,
@@ -80,7 +80,7 @@ export function superflareDevProxyVitePlugin<Env extends { APP_KEY: string }>(
                   await loadContext.getSessionCookie()
                 );
               }
-              await toNodeRequest(response, nodeRes);
+              await sendResponse(nodeRes, response);
             } catch (error) {
               next(error);
             }

@@ -65,7 +65,7 @@ importers:
         version: 5.2.0
       isbot:
         specifier: latest
-        version: 5.1.21
+        version: 5.1.22
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.0
@@ -250,7 +250,7 @@ importers:
         version: 8.10.0(eslint@7.32.0)
       eslint-config-turbo:
         specifier: latest
-        version: 2.3.3(eslint@7.32.0)
+        version: 2.4.0(eslint@7.32.0)(turbo@2.2.3)
       eslint-plugin-react:
         specifier: 7.31.8
         version: 7.31.8(eslint@7.32.0)
@@ -352,9 +352,9 @@ importers:
 
   packages/superflare-remix:
     dependencies:
-      set-cookie-parser:
-        specifier: ^2.7.1
-        version: 2.7.1
+      '@mjackson/node-fetch-server':
+        specifier: ^0.6.1
+        version: 0.6.1
       superflare:
         specifier: workspace:*
         version: link:../superflare
@@ -365,12 +365,6 @@ importers:
       '@react-router/dev':
         specifier: ^7
         version: 7.1.2(@types/node@18.19.39)(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.7.3)(vite@5.3.4(@types/node@18.19.39))(wrangler@3.103.2(@cloudflare/workers-types@4.20250109.0))
-      '@react-router/node':
-        specifier: ^7
-        version: 7.1.2(react-router@7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(typescript@5.7.3)
-      '@types/set-cookie-parser':
-        specifier: ^2.4.10
-        version: 2.4.10
       react-router:
         specifier: ^7
         version: 7.1.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1552,6 +1546,9 @@ packages:
   '@mjackson/node-fetch-server@0.2.0':
     resolution: {integrity: sha512-EMlH1e30yzmTpGLQjlFmaDAjyOeZhng1/XCd7DExR8PNAnG/G1tyruZxEoUe11ClnwGhGrtsdnyyUx1frSzjng==}
 
+  '@mjackson/node-fetch-server@0.6.1':
+    resolution: {integrity: sha512-9ZJnk/DJjt805uv5PPv11haJIW+HHf3YEEyVXv+8iLQxLD/iXA68FH220XoiTPBC4gCg5q+IMadDw8qPqlA5wg==}
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -1928,9 +1925,6 @@ packages:
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
-
-  '@types/set-cookie-parser@2.4.10':
-    resolution: {integrity: sha512-GGmQVGpQWUe5qglJozEjZV/5dyxbOOZ0LHe/lqyWssB88Y4svNfst0uqBVscdDeIKl5Jy5+aPSvy7mI9tYRguw==}
 
   '@types/tar-fs@2.0.4':
     resolution: {integrity: sha512-ipPec0CjTmVDWE+QKr9cTmIIoTl7dFG/yARCM5MqK8i6CNLIG1P8x4kwDsOQY1ChZOZjH0wO9nvfgBvWl4R3kA==}
@@ -2507,10 +2501,11 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-config-turbo@2.3.3:
-    resolution: {integrity: sha512-cM9wSBYowQIrjx2MPCzFE6jTnG4vpTPJKZ/O+Ps3CqrmGK/wtNOsY6WHGMwLtKY/nNbgRahAJH6jGVF6k2coOg==}
+  eslint-config-turbo@2.4.0:
+    resolution: {integrity: sha512-AiRdy83iwyG4+iMSxXQGUbEClxkGxSlXYH8E2a+0972ao75OWnlDBiiuLMOzDpJubR+QVGC4zonn29AIFCSbFw==}
     peerDependencies:
       eslint: '>6.6.0'
+      turbo: '>2.0.0'
 
   eslint-plugin-react@7.31.8:
     resolution: {integrity: sha512-5lBTZmgQmARLLSYiwI71tiGVTLUuqXantZM6vlSY39OaDSV0M7+32K5DnLkmFrwTe+Ksz0ffuLUC91RUviVZfw==}
@@ -2518,10 +2513,11 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-turbo@2.3.3:
-    resolution: {integrity: sha512-j8UEA0Z+NNCsjZep9G5u5soDQHcXq/x4amrwulk6eHF1U91H2qAjp5I4jQcvJewmccCJbVp734PkHHTRnosjpg==}
+  eslint-plugin-turbo@2.4.0:
+    resolution: {integrity: sha512-qCgoRi/OTc1VMxab7+sdKiV1xlkY4qjK9sM+kS7+WogrB1DxLguJSQXvk4HA13SD5VmJsq+8FYOw5q4EUk6Ixg==}
     peerDependencies:
       eslint: '>6.6.0'
+      turbo: '>2.0.0'
 
   eslint-scope@5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}
@@ -3011,8 +3007,8 @@ packages:
     resolution: {integrity: sha512-4X8KZHyaIqXOqEv1qfZOqshMX3r7Q/VtMEMzuGPZljDMEIGpX7bcGODR9gZztXdcPBEJpNioQXXBJun+xi2G5g==}
     engines: {node: '>=18'}
 
-  isbot@5.1.21:
-    resolution: {integrity: sha512-0q3naRVpENL0ReKHeNcwn/G7BDynp0DqZUckKyFtM9+hmpnPqgm8+8wbjiVZ0XNhq1wPQV28/Pb8Snh5adeUHA==}
+  isbot@5.1.22:
+    resolution: {integrity: sha512-RqCFY3cJy3c2y1I+rMn81cfzAR4XJwfPBC+M8kffUjbPzxApzyyv7Tbm1C/gXXq2dSCuD238pKFEWlQMTWsTFw==}
     engines: {node: '>=18'}
 
   isexe@2.0.0:
@@ -5559,6 +5555,8 @@ snapshots:
 
   '@mjackson/node-fetch-server@0.2.0': {}
 
+  '@mjackson/node-fetch-server@0.6.1': {}
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -5915,10 +5913,6 @@ snapshots:
       csstype: 3.1.3
 
   '@types/semver@7.5.8': {}
-
-  '@types/set-cookie-parser@2.4.10':
-    dependencies:
-      '@types/node': 18.19.39
 
   '@types/tar-fs@2.0.4':
     dependencies:
@@ -6652,10 +6646,11 @@ snapshots:
     dependencies:
       eslint: 7.32.0
 
-  eslint-config-turbo@2.3.3(eslint@7.32.0):
+  eslint-config-turbo@2.4.0(eslint@7.32.0)(turbo@2.2.3):
     dependencies:
       eslint: 7.32.0
-      eslint-plugin-turbo: 2.3.3(eslint@7.32.0)
+      eslint-plugin-turbo: 2.4.0(eslint@7.32.0)(turbo@2.2.3)
+      turbo: 2.2.3
 
   eslint-plugin-react@7.31.8(eslint@7.32.0):
     dependencies:
@@ -6675,10 +6670,11 @@ snapshots:
       semver: 6.3.1
       string.prototype.matchall: 4.0.11
 
-  eslint-plugin-turbo@2.3.3(eslint@7.32.0):
+  eslint-plugin-turbo@2.4.0(eslint@7.32.0)(turbo@2.2.3):
     dependencies:
       dotenv: 16.0.3
       eslint: 7.32.0
+      turbo: 2.2.3
 
   eslint-scope@5.1.1:
     dependencies:
@@ -7256,7 +7252,7 @@ snapshots:
 
   isbot@5.1.14: {}
 
-  isbot@5.1.21: {}
+  isbot@5.1.22: {}
 
   isexe@2.0.0: {}
 

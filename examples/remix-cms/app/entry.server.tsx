@@ -6,28 +6,36 @@ export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  reactRouterContext: EntryContext
+  routerContext: EntryContext
 ) {
+  let shellRendered = false;
+  const userAgent = request.headers.get("user-agent");
+
   const body = await renderToReadableStream(
-    <ServerRouter context={reactRouterContext} url={request.url} />,
+    <ServerRouter context={routerContext} url={request.url} />,
     {
       onError(error: unknown) {
         responseStatusCode = 500;
-        // Log streaming rendering errors from inside the shell
-        console.error(error);
+        // Log streaming rendering errors from inside the shell.  Don't log
+        // errors encountered during initial shell rendering since they'll
+        // reject and get logged in handleDocumentRequest.
+        if (shellRendered) {
+          console.error(error);
+        }
       },
-      signal: request.signal,
     }
   );
+  shellRendered = true;
 
-  if (isbot(request.headers.get("user-agent") || "")) {
+  // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
+  // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation
+  if ((userAgent && isbot(userAgent)) || routerContext.isSpaMode) {
     await body.allReady;
   }
 
   responseHeaders.set("Content-Type", "text/html");
-
   return new Response(body, {
-    status: responseStatusCode,
     headers: responseHeaders,
+    status: responseStatusCode,
   });
 }

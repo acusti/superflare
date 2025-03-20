@@ -1,4 +1,5 @@
 {
+  "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
   "name": "remix-cms",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./worker.ts",
@@ -15,6 +16,7 @@
   "d1_databases": [
     {
       "binding": "DB",
+      "database_name": "remix-cms",
       "database_id": "f6ea5020-02e4-4926-a499-657afebdf67d"
     }
   ],

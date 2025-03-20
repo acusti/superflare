@@ -26,7 +26,7 @@ If you've created a Superflare app with `npx superflare new`, you should already
 
 ## Register and Login pages
 
-The [Superflare Remix template](https://github.com/jplhomer/superflare/tree/main/templates/remix) provides basic `/register` and `/login` routes and forms for you to use. You can use these as-is, or you can copy the code and modify it to your liking.
+The [Superflare React Router template](https://github.com/jplhomer/superflare/tree/main/templates/remix) provides basic `/register` and `/login` routes and forms for you to use. You can use these as-is, or you can copy the code and modify it to your liking.
 
 ## Protecting routes
 
@@ -34,7 +34,7 @@ You can protect routes by using the `SuperflareAuth` instance from your app’s 
 
 ```ts
 // routes/my-secret-route.tsx
-export async function loader({ context: { auth } }: LoaderFunctionArgs) {
+export async function loader({ context: { auth } }: Route.LoaderArgs) {
   // If the user is not logged in, redirect them to the login page
   if (!(await auth.check(User))) {
     return redirect("/login");
@@ -53,7 +53,7 @@ To log out, you can use the `SuperflareAuth` instance's `logout()` method:
 
 ```ts
 // routes/logout.tsx
-export async function action({ context: { auth } }: LoaderFunctionArgs) {
+export async function action({ context: { auth } }: Route.LoaderArgs) {
   auth.logout();
 
   return redirect("/login");

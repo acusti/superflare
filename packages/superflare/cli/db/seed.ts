@@ -36,7 +36,6 @@ export async function seedDb(dbName: string, seedPath: string) {
       if (!d1Database) {
         throw new Error(`Database ${dbName} not found`);
       }
-      // TODO: Find out why errors in the seeder are not bubbled to this try/catch
       if (seedModule.default) {
         await seedModule.default(d1Database);
         logger.info(`Seeding complete!`);

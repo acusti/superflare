@@ -7,8 +7,10 @@ type Cloudflare = Omit<PlatformProxy<Env>, "dispose" | "caches"> & {
   caches: CacheStorage;
 };
 
-declare module "@remix-run/cloudflare" {
+declare module "react-router" {
   interface AppLoadContext {
     cloudflare: Cloudflare;
   }
 }
+
+export {}; // necessary for TS to treat this as a module

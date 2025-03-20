@@ -1,11 +1,12 @@
-import { redirect, type ActionFunctionArgs } from "@remix-run/cloudflare";
-import { Form, useActionData } from "@remix-run/react";
+import { Form, redirect, useActionData } from "react-router";
 import { Article } from "~/models/Article";
 import invariant from "tiny-invariant";
 import { FormField } from "~/components/Form";
 import MarkdownComposer from "~/components/admin/MarkdownComposer";
 import { User } from "~/models/User";
 import { ArticleUpdated } from "~/events/ArticleUpdated";
+
+import type { Route } from "../../+types/admin.articles.$slug._index";
 
 interface ActionData {
   title: string | null;
@@ -29,7 +30,7 @@ const badResponse = (data: ActionData) => Response.json(data, { status: 422 });
 export async function action({
   request,
   context: { auth, session },
-}: ActionFunctionArgs) {
+}: Route.ActionArgs) {
   const body = new URLSearchParams(await request.text());
   const title = body.get("title");
   const content = body.get("content");

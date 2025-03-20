@@ -1,8 +1,9 @@
-import { type LoaderFunctionArgs, redirect } from "@remix-run/cloudflare";
-import { useLoaderData } from "@remix-run/react";
+import { redirect, useLoaderData } from "react-router";
 import { User } from "~/models/User";
 
-export async function loader({ context: { auth } }: LoaderFunctionArgs) {
+import type { Route } from "./+types/dashboard";
+
+export async function loader({ context: { auth } }: Route.LoaderArgs) {
   if (!(await auth.check(User))) {
     return redirect("/login");
   }

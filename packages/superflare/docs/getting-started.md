@@ -32,7 +32,7 @@ npm install @superflare/remix
 Then, in your `worker.ts` file, import the `handleFetch` function from `@superflare/remix`, and import your local `superflare.config.ts` as `config`. Superflare handles building and providing the load context, so you’ll be able to delete a lot of the code required with the [default Remix adapter](https://github.com/remix-run/remix/blob/main/templates/cloudflare-workers/server.ts):
 
 ```ts
-import { createRequestHandler, type ServerBuild } from "@remix-run/cloudflare";
+import { createRequestHandler, type ServerBuild } from "react-router";
 import { handleFetch } from "@superflare/remix";
 import config from "./superflare.config";
 import * as build from "./build/server";
@@ -83,12 +83,12 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-For local development, Remix uses Vite’s dev server with a [Cloudflare Proxy Vite plugin](https://remix.run/docs/en/main/guides/vite#cloudflare-proxy) that invokes [`getPlatformProxy`](https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy) to provide [bindings](https://developers.cloudflare.com/workers/wrangler/api/#supported-bindings) to your application from outside of the deployed `workersd` environment. Superflare has an additional entry point, `@superflare/remix/dev`, that exports `superflareDevProxyVitePlugin`, which adds Superflare support and can be used in place of Remix’s proxy plugin in your Vite config:
+For local development, React Router uses Vite’s dev server with a [Cloudflare Proxy Vite plugin](https://github.com/remix-run/react-router/blob/main/packages/react-router-dev/vite/cloudflare-dev-proxy.ts#L32-L37) that invokes [`getPlatformProxy`](https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy) to provide [bindings](https://developers.cloudflare.com/workers/wrangler/api/#supported-bindings) to your application from outside of the deployed `workersd` environment. Superflare has an additional entry point, `@superflare/remix/dev`, that exports `superflareDevProxyVitePlugin`, which adds Superflare support and can be used in place of React Router’s proxy plugin in your Vite config:
 
 ```ts
 // vite.config.ts
 
-import { vitePlugin as remix } from "@remix-run/dev";
+import { reactRouter } from "@react-router/dev/vite"";
 import { superflareDevProxyVitePlugin } from "@superflare/remix/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -96,7 +96,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [
     superflareDevProxyVitePlugin<Env>(),
-    remix(),
+    reactRouter(),
     tsconfigPaths(),
   ],
   ssr: {
@@ -114,7 +114,7 @@ export default defineConfig({
 **Do not** use `build: { minify: true }` in your Vite config. This will mangle the variable names of the `workerd` (SSR) build and change the names of your [models](/models), which will in turn break the mapping between those models and their corresponding DB tables. Vite’s [default minify behavior](https://vite.dev/config/build-options.html#build-minify) is to minify the client build and leave the SSR build untouched, which is what we want.
 {% /callout %}
 
-The Superflare Remix integration creates a [cookie-based session storage](https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage) and injects `auth`, `session`, and `cloudflare` objects into your load context (the `AppContext` type), which is provided to your loaders and actions. The `cloudflare` object matches the return value of [Wrangler’s `getPlatformProxy`](https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy).
+The Superflare React Router integration creates a [cookie-based session storage](https://reactrouter.com/explanation/sessions-and-cookies) and injects `auth`, `session`, and `cloudflare` objects into your load context (the `AppContext` type), which is provided to your loaders and actions. The `cloudflare` object matches the return value of [Wrangler’s `getPlatformProxy`](https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy).
 
 {% callout title="Cookie Monster" %}
 Superflare automatically commits your session data to the outgoing response's `set-cookie` header, so you don't need to worry about that like you do in a standard Remix app.

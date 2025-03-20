@@ -1,6 +1,6 @@
-import { Form } from "@remix-run/react";
+import { Form } from "react-router";
 import { Page } from "~/components/admin/Page";
-import { useAdmin } from "../auth/hooks";
+import { useAdmin } from "./auth/hooks";
 
 export default function Profile() {
   const adminData = useAdmin();

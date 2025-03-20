@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Link, useNavigate } from "@remix-run/react";
+import { Link, useNavigate } from "react-router";
 import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 
 function Hit({ hit, children }: { hit: any; children: any }) {

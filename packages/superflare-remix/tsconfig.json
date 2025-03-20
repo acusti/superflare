@@ -4,7 +4,8 @@
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "isolatedModules": false,
     "rootDir": ".",

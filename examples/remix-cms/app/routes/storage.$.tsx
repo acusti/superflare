@@ -1,7 +1,8 @@
-import { type LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { servePublicPathFromStorage } from "superflare";
 
-export async function loader({ request }: LoaderFunctionArgs) {
+import type { Route } from "./+types/storage.$";
+
+export async function loader({ request }: Route.LoaderArgs) {
   const { pathname } = new URL(request.url);
   return servePublicPathFromStorage(pathname);
 }

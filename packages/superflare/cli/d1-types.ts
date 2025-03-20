@@ -50,7 +50,7 @@ interface ModelWithSuperflareTypes {
 }
 
 const isSqliteTable = (table: string) =>
-  table === "_cf_KV" || table.startsWith("sqlite_");
+  /^_cf_/.test(table) || table.startsWith("sqlite_");
 
 export async function getD1DatabaseTables({
   db,
